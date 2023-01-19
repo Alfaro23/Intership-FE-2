@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector, useDispatch } from "react-redux";
+import "./App.scss";
+import { useEffect, useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import { db } from "./firebase";
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { addHotelList } from "./redux/toolkitReducer";
+
+const App = () => {
+
+  const [hotelData, setHotelData] = useState(null);
+
+  const dispatch = useDispatch();
+  const hotelList = useSelector(state => state.toolkit)
+  
+  useEffect(() => {
+    const queryList = query(collection(db, "newDB"));
+
+    const unSubScribe = onSnapshot(queryList, (querySnapshot) => {
+      let articlesArr = []
+    
+      querySnapshot.forEach((doc) => articlesArr.push({...doc.data()}));
+
+      setHotelData(articlesArr);
+      dispatch(addHotelList(articlesArr))
+    });
+    
+    return () => unSubScribe()
+  }, [])
+
+  console.log(hotelList)
+  return(
+    <div className="container">
+        <h1 className="container__title">Hello</h1>
     </div>
-  );
+    
+  )
 }
 
 export default App;
