@@ -3,14 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 const toolKitSlice = createSlice({
     name: "hotel",
     initialState: {
-        hotelList: []
+        roomsList: [],
+        accountList: {},
+        userInfo: {},
     },
     reducers:{
-        addHotelList(state, action){
-            state.hotelList.push(action.payload)
-        }
+        addRoomsList(state, action){
+            state.roomsList.push(action.payload)
+        },
+        addAccountslList(state, action){
+            state.accountList = action.payload
+        },
+        // addUserInfo(state, action){
+        //     state.userInfo = action.payload
+        // },
     }
 })
 
 export default toolKitSlice.reducer;
-export const {addHotelList} = toolKitSlice.actions;
+export const {addRoomsList, addAccountslList, addUserInfo} = toolKitSlice.actions;

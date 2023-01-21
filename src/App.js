@@ -1,17 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./App.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { db } from "./firebase";
 import { collection, onSnapshot, query } from "firebase/firestore";
-import { addHotelList } from "./redux/toolkitReducer";
+import { addRoomsList, addAccountslList } from "./redux/toolkitReducer";
+
+import { Route, Routes } from "react-router-dom";
+import { AuthWindow } from "./components/AuthWindow";
+import { Home } from "./page/Home";
+import { Header } from "./components/Header";
 
 const App = () => {
 
-  const [hotelData, setHotelData] = useState(null);
-
   const dispatch = useDispatch();
-  const hotelList = useSelector(state => state.toolkit)
+  // const accountList = useSelector(state => state.toolkit.accountList);
+  // const roomsList = useSelector(state => state.toolkit.roomsList);
   
   useEffect(() => {
     const queryList = query(collection(db, "newDB"));
@@ -21,18 +25,23 @@ const App = () => {
     
       querySnapshot.forEach((doc) => articlesArr.push({...doc.data()}));
 
-      setHotelData(articlesArr);
-      dispatch(addHotelList(articlesArr))
+      const [{info}] = articlesArr;
+      const {Rooms, Accounts} = info;
+
+      dispatch(addRoomsList(Rooms));
+      dispatch(addAccountslList(Accounts));
     });
     
     return () => unSubScribe()
   }, [])
 
-  console.log(hotelList)
   return(
-    <div className="container">
-        <h1 className="container__title">Hello</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<AuthWindow/>}></Route>
+      <Route path="/home" element={<Header/>}>
+        <Route path="/home" element={<Home/>}></Route>
+      </Route>
+    </Routes>
     
   )
 }
