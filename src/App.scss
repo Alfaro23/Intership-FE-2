@@ -7,10 +7,6 @@
     margin-left: 15px;
 }
 
-body{
-    // background-color: rgba(139,139,139, .7);
-}
-
 .container{
     position: relative;
     display: flex;
@@ -19,6 +15,27 @@ body{
     width: 100%;
     height: 100vh;
     background-color: rgba(139,139,139, .7);
+
+    &-home{
+        margin: 0 auto;
+        padding: 0 100px 80px 100px;
+        background-color: rgba(139,139,139, .1);
+    }
+
+    &-top{
+        display: flex;
+        align-items: center;
+        margin: 0px 0 30px 0;
+        padding-top: 20px;
+    }
+    &-room{
+        flex-direction: column;
+        background-color: #fff;
+        align-items: unset;
+        padding: 0 100px;
+        position: unset;
+        padding-top: 300px;
+    }
 
 }
 
@@ -109,5 +126,171 @@ body{
         border-radius: 15px;
         padding: 10px 15px;
         cursor: pointer;
+    }
+}
+
+.button{
+    outline: none;
+    border: none;
+    background-color: blue;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    color:  #fff;
+
+    &__room{
+        width: 14%;
+    }
+    &__clear{
+        padding: 10px 15px;
+        margin-right: 40px;
+    }
+    &__sort{
+        background-color: inherit;
+        color: black;
+        font-size: inherit;
+    }
+    &__link{
+        color: inherit;
+        text-decoration: none;
+    }
+    &__logout{
+        background-color: inherit;
+    }
+    &__back{
+        background-color: inherit;
+        text-decoration: none;
+        color: rgb(13, 68, 248);
+    }
+    &__checkIn{
+        background-color: #fff;
+        color: grey;
+        border: 1px solid grey;
+        margin-right: 20px;
+    }
+}
+.rooms{
+    display: flex;
+    flex-direction: column;
+}
+.filters, .rooms, .room{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    
+    &__number{
+        width: 17%;
+    }
+    &__type{
+        width: 17%;
+    }
+    &__occupancy{
+        width: 17%;
+    }
+    &__price{
+        width: 15%;
+    }
+    &__guest{
+        width: 20%;
+    }
+}
+
+.filters, .rooms{
+    padding: 20px;
+}
+.filters{
+    padding-bottom: 0;
+}
+.room{
+    padding: 20px 0;
+}
+.line:not(:last-child){
+    
+    height: 2px;
+    width: 100%;
+    color: grey;
+}
+
+.pagination{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+.slider{
+    width: 650px;
+    height: 350px;
+    
+    &__image{
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.singleRoom{
+    display: flex;
+    // margin-bottom: 100px;
+}
+.panel{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: -200px;
+    &__img{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.info{
+    margin-left: 20px;
+    margin-right: 100px;
+
+    &__title{
+        font-weight: 700;
+    }
+    &__number{
+        margin-bottom: 20px;
+        text-decoration: underline;
+    }
+    &__text{
+        margin-bottom: 20px;
+        width: 170px;
+    }
+}
+.buttons{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 25px;
+}
+.features{
+    width: 450px;
+    
+    &__title{
+        margin-bottom: 15px;
+    }
+
+    &__item{
+        list-style-type: none;
+
+        &::before{
+            content: "✔";
+            margin-right: 5px;
+        }
+    }
+}
+.description{
+    display: flex;
+    align-items: baseline;
+    padding-top: 200px;
+    padding-bottom: 100px;
+   
+    &__text{
+        padding-left: 20px;
+    }
+    &__title{
+        // margin-left: 59px;
     }
 }

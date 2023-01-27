@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom";
 import { AuthWindow } from "./components/AuthWindow";
 import { Home } from "./page/Home";
 import { Header } from "./components/Header";
+import { Rooms } from "./page/Room";
 
 const App = () => {
 
@@ -27,7 +28,7 @@ const App = () => {
 
       const [{info}] = articlesArr;
       const {Rooms, Accounts} = info;
-
+      console.log(Rooms);
       dispatch(addRoomsList(Rooms));
       dispatch(addAccountslList(Accounts));
     });
@@ -37,9 +38,10 @@ const App = () => {
 
   return(
     <Routes>
-      <Route path="/" element={<AuthWindow/>}></Route>
-      <Route path="/home" element={<Header/>}>
-        <Route path="/home" element={<Home/>}></Route>
+      <Route path="/login" element={<AuthWindow/>}></Route>
+      <Route path="/" element={<Header/>}>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/room/:id" element={<Rooms/>}></Route>
       </Route>
     </Routes>
     

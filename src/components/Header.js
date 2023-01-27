@@ -1,27 +1,30 @@
 import { Link, Outlet } from "react-router-dom";
 import logo from "../logo.png";
-import { useSelector } from "react-redux";
 
 export const Header = () => {
 
-    const test = useSelector(state => state.toolkit.userInfo);
-    console.log(test);
+    const logOut = () => window.location.assign('http://localhost:3000/login')
 
     return(
         <>
-            <header className="header">
-                <div className="logo">
-                    <Link end to="/home">
-                        <img src={logo} alt="logo" width="50px" height="50px"></img>
-                    </Link>
-                </div>
-                <div className="user">
-                    <img src={localStorage.image} alt="logo" width="50px" height="50px" className="user__logo"></img>
-                    <p>{localStorage.username ? localStorage.username : "unknown name"}</p>
-                </div>
-            </header>
+        {
+            localStorage.username ? <>
+                <header className="header">
+                    <div className="logo">
+                        <Link end to="/">
+                            <img src={logo} alt="logo" width="50px" height="50px"></img>
+                        </Link>
+                    </div>
+                    <div className="user">
+                        <img src={localStorage.image} alt="logo" width="50px" height="50px" className="user__logo"></img>
+                        <button onClick={logOut} className="button button__logout">Log out</button>
+                    </div>
+                </header>
 
-            <Outlet></Outlet>
-        </>
+                <Outlet></Outlet>
+            </> : window.location.assign('http://localhost:3000/login')
+        }
+
+        </> 
     )
 }

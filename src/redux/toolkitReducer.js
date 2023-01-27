@@ -9,7 +9,7 @@ const toolKitSlice = createSlice({
     },
     reducers:{
         addRoomsList(state, action){
-            state.roomsList.push(action.payload)
+            state.roomsList = action.payload //.push(action.payload)
         },
         addAccountslList(state, action){
             state.accountList = action.payload

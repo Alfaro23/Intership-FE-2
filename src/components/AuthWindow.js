@@ -30,7 +30,7 @@ export const AuthWindow = () => {
                     document.querySelector("#password").value = localStorage.password;
                 }
                 
-                window.location.assign('http://localhost:3000/home');
+                window.location.assign('http://localhost:3000/');
             } 
             if(item.password !== enterPassword) {
                 
@@ -76,13 +76,13 @@ export const AuthWindow = () => {
                 </div>
 
                 <div className="authorization-block">
-                    <button className="authorization__button" onClick={(e) => checkData(e)}>Log in</button>
+                    <button className="button authorization__button" onClick={(e) => checkData(e)}>Log in</button>
                 </div>
             </form>
 
             <div className="error">
                 <h1 className="error__message">Invalid username or password</h1>
-                <button className="error__button" onClick={closeModal}>Ok</button>
+                <button className="button error__button" onClick={closeModal}>Ok</button>
             </div>
         </div>
     )
