@@ -32,6 +32,7 @@
         flex-direction: column;
         background-color: #fff;
         align-items: unset;
+        // margin: 0 100px;
         padding: 0 100px;
         position: unset;
         padding-top: 300px;
@@ -162,12 +163,19 @@
         text-decoration: none;
         color: rgb(13, 68, 248);
     }
-    &__checkIn{
+    &__checkIn, &__cancel{
         background-color: #fff;
         color: grey;
         border: 1px solid grey;
         margin-right: 20px;
     }
+
+    &__close{
+        padding: 0;
+        background-color: #fff;
+        color: black;
+    }
+
 }
 .rooms{
     display: flex;
@@ -231,7 +239,6 @@
 
 .singleRoom{
     display: flex;
-    // margin-bottom: 100px;
 }
 .panel{
     display: flex;
@@ -290,7 +297,77 @@
     &__text{
         padding-left: 20px;
     }
-    &__title{
-        // margin-left: 59px;
+    
+}
+
+.modal{
+    
+    &-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    &__text{
+        margin-top: 20px;
+    }
+    &-date{
+        &__input{
+            border: 1px solid gray;
+            padding: 5px 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            outline: none;
+        }
+    }
+    &-name{
+        &__input{
+            width: 100%;
+            border: 1px solid gray;
+            padding: 5px 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            outline: none;
+        }
+    }
+    &-wrapper{
+        width: 100%;
+        height: 120%;
+        background-color: rgba(77, 76, 76, 0.7);
+        position: absolute;
+        z-index: 33;
+        top: 0;
+        left: 0;
+    }
+    &-checkOut{
+        position: absolute;
+        z-index: 33;
+        top: 30%;
+        left: 40%;
+        border-radius: 20px;
+        color: grey;
+
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        padding: 20px;
+
+        &__text{
+            margin-bottom: 50px;
+        }
+    }
+    &-chekin{
+        position: absolute;
+        z-index: 33;
+        top: 30%;
+        left: 33%;
+        border-radius: 20px;
+        color: grey;
+
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        padding: 20px;
     }
 }

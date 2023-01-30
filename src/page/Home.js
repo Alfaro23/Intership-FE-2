@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Pagination } from 'antd';
 import { Link } from "react-router-dom";
+import { CheckIn } from "../components/CheckIn";
 
 export const Home = () => {
 
